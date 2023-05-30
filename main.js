@@ -9,15 +9,12 @@ let allNames = ["Cryofire", "Landmine", "Dune Runner", "Brainstorm", "Triggerhap
 let allNames2 = ["cryofire", "landmine", "dunerunner", "brainstorm", "triggerhappy", "starscream"]; //Just to match the names in points[] to tally up in the tallyingUp();
 
 function submitForm() {	
-	for (x=0; x < questions.length; x++) {
-		for (y=0; y < questions[x].getElementsByTagName("input").length; y++) {
-			if (questions[x].getElementsByTagName("input")[y].checked) {
-				points[x] = answers[y].className; //Grabs the character name (stored in the className) of the checked option and stores it in the points[] array	
-				console.log(points[x]);
-			}
-		}	
+	for (answer of answers) {
+		if (answer.checked) {
+			points.push(answer.className); //Grabs the character name (stored in the className) of the checked option and stores it in the points[] array			
+		}
 	}	
-	tallyingUp();		
+	tallyingUp();	
 }
  
 function tallyingUp () {
