@@ -1,5 +1,7 @@
 let body = document.body;
-let answers = document.getElementsByTagName("input"); //Grabs the input/radio values. All are grabbed regardless of the question they fall under
+let mainSection = document.getElementById("mainQuestions"); 
+let answers = mainSection.getElementsByTagName("input"); //Grabs the input/radio values. All are grabbed regardless of the question they fall under
+let answers2 = tieBreakerQuestions.getElementsByTagName("input");
 
 let theCharacters = [
 	{
@@ -28,21 +30,27 @@ let theCharacters = [
 	},
 ]
 
+let classArray;
+
 function submitForm() {
 	for (answer of answers) {
 		if (answer.checked) {
-			for (character of theCharacters) {
-				if (answer.className == character.name) {
-					character.count++;
+			classArray = answer.className.split(" ");
+			for (classes of classArray) {
+				for (character of theCharacters) {
+					if (classes == character.name) {
+						character.count++;
+					}
 				}
-			}		
-		}
-	}	
-	tallyingUp();	
+			}		//REMOVAL STARTS HERE
+		}		
+	}
+	tallyingUp();
 }
 
+let result = [];
 function tallyingUp() {
-	let result = [];
+
 	result[0] = {
 		name: null,
 		count: 0,
@@ -52,16 +60,49 @@ function tallyingUp() {
 			if (char1.count > char2.count) {
 				if (char1.count > result[0].count) {
 					result[0] = char1;
-				} else if (char1.count == result[0].count && char1.name != result[0].name) /*THIS WILL NEED TO BE ALTERED AS MORE QUESTIONS ARE ADDED!*/ {
-					result.push(char1);
+				} else if (char1.count == result[0].count) {
+					for (res of result) {
+						if (char1.name == res.name) {
+							x = true;
+						} else if (char1.name != res.name) {
+							x = false;
+						}
+					}
+					if (x == false) {
+						result.push(char1);
+					}
 				}
 			}
 		}
 	}
-	
+
+	mainQuestions.style.display = "none";
+
 	if (result.length < 2) {
 		console.log(`You are ${result[0].name}!`);
 	} else {
 		console.log(`Now for the tie breaker question!`);
+		tieBreaker();
+	}
+}
+
+
+function tieBreaker () {
+	tieBreakerQuestions.style.display = "block";
+	let tbs = tieBreakerQuestions.getElementsByTagName("p");
+	for (x = 0; x < tbs.length; x++) {
+		for (y = 0; y < result.length; y++) {
+			if (tbs[x].className == result[y].name) {
+				tbs[x].style.display = "block";
+			}
+		}
+	}
+}
+
+function submitForm2 () {
+	for (answer of answers2) {
+		if (answer.checked) {
+			console.log(`You are ${answer.className}!`);
+		}
 	}
 }

@@ -1,0 +1,11 @@
+#mainQuestions {
+    display: block;
+}
+
+#tieBreakerQuestions {
+    display: none;
+}
+
+#tieBreakerQuestions p {
+    display: none;
+}

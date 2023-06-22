@@ -1,6 +1,10 @@
-<!-- TESTING BEGINS-->
 <html>
+<head>
+	<title>TFGQ Personality Test</title>
+	<link rel="stylesheet" href="style.css">
+</head>
 <body>
+<section id="mainQuestions">
 	<div>
 	<span>1. What value do you bring to the group?</span>
 		<p>
@@ -63,7 +67,7 @@
 			<label for="q3o1">It's part of the job. We all have to do our time.<label>
 		</p>
 		<p>
-			<input type="radio" name="q3" id="q3o2" class="landmine">
+			<input type="radio" name="q3" id="q3o2" class="landmine brainstorm">
 			<label for="q3o2">If it isn't happening consistently, I'll help.</label>
 		</p>
 		<p>
@@ -79,7 +83,126 @@
 			<label for="q3o5">If I stay and help will it look better or worse in front of my boss?</label>
 		</p>
 	</div>
+	<div>
+		<span>4. You suspect a coworker stole from you. Nothing of too much worth - just a five dollar bill you left at your work station. This has never happened before. Do you confront them?</span>
+		<p>
+			<input type="radio" name="q4" id="q4o1" class="cryofire">
+			<label for="q4o1">Yes. As soon as I see him. He'll need the money towards his medical bill.</label>
+		</p>
+		<p>
+			<input type="radio" name="q4" id="q4o2" class="landmine">
+			<label for="q4o2">Yes.</label>
+		</p>
+		<p>
+			<input type="radio" name="q4" id="q4o2" class="dunerunner">
+			<label for="q4o2">I'll probably let it go the first time but not if it happens again. Fool me once...</label>
+		</p>
+		<p>
+			<input type="radio" name="q4" id="q4o3" class="brainstorm">		
+			<label for="q4o3">Once I've organized all of the facts, and I'm sure, yes.</label>
+		</p>
+		<p>
+			<input type="radio" name="q4" id="q4o4" class="triggerhappy">		
+			<label for="q4o4">I'll either go to my superiors or say nothing. I hate confrontation. Might do some underhanded things to get back at him.</label>
+		</p>
+		<p>
+			<input type="radio" name="q4" id="q4o5" class="starscream">		
+			<label for="q4o5">Well, I probably stole from him first, and stole more. I won't confront him, but I'll get back at him.</label>
+		</p>
+	</div>
+	<div>
+		<span>5. At group meetings how often do you interject your ideas?</span>
+		<p>
+			<input type="radio" name="q5" id="q5o2" class="landmine cryofire starscream">
+			<label for="q5o2">A lot.</label>
+		</p>
+		<p>
+			<input type="radio" name="q5" id="q5o2" class="dunerunner">
+			<label for="q5o2">Once in a while.</label>
+		</p>
+		<p>
+			<input type="radio" name="q5" id="q5o3" class="brainstorm">		
+			<label for="q5o3">Often</label>
+		</p>
+		<p>
+			<input type="radio" name="q5" id="q5o4" class="triggerhappy">		
+			<label for="q5o4">Never</label>
+		</p>
+	</div>
+	<div>
+		<span>6. When things go badly do you instinctively blame yourself?</span>
+		<p>
+			<input type="radio" name="q6" id="q6o2" class="cryofire landmine brainstorm starscream">
+			<label for="q6o2">Sometimes</label>
+		</p>
+		<p>
+			<input type="radio" name="q6" id="q6o2" class="dunerunner">
+			<label for="q6o2">Yes. To a fault.</label>
+		</p>
+		<p>
+			<input type="radio" name="q6" id="q6o4" class="triggerhappy">		
+			<label for="q6o4">No, not really</label>
+		</p>
+	</div>
+	<div>
+		<span>7. How do you apologize when you feel you've wronged someone?</span>
+		<p>
+			<input type="radio" name="q7" id="q7o1" class="cryofire">
+			<label for="q7o1">I'll buy them a beer</label>
+		</p>
+		<p>
+			<input type="radio" name="q7" id="q7o2" class="landmine">
+			<label for="q7o2">Apologies are hard. I'd like to be direct but a lot of times I resort to apologizing indirectly.</label>
+		</p>
+		<p>
+			<input type="radio" name="q7" id="q7o2" class="dunerunner">
+			<label for="q7o2">I'll talk to them and try not to make it too uncomfortable</label>
+		</p>
+		<p>
+			<input type="radio" name="q7" id="q7o3" class="brainstorm">		
+			<label for="q7o3">Formally, verbally and directly</label>
+		</p>
+		<p>
+			<input type="radio" name="q7" id="q7o4" class="triggerhappy">		
+			<label for="q7o4">Wait for it to pass over</label>
+		</p>
+		<p>
+			<input type="radio" name="q7" id="q7o5" class="starscream">		
+			<label for="q7o5">Get it over with as quick as possible and crack a joke</label>
+		</p>
+	</div> 
 	<input type="button" onclick="submitForm()" value="Submit Your Answers!">
+</section>
+<section id="tieBreakerQuestions">
+	<div>
+		<span>What single word best describes your role on the team?</span>
+		<p class="cryofire">
+			<input type="radio" name="q3" id="q3o1" class="cryofire">
+			<label for="q3o1">Enforcer<label>
+		</p>
+		<p class="landmine">
+			<input type="radio" name="q3" id="q3o2" class="landmine">
+			<label for="q3o2">Leader</label>
+		</p>
+		<p class="brainstorm">
+			<input type="radio" name="q3" id="q3o2" class="brainstorm">
+			<label for="q3o2">Thinker</label>
+		</p>
+		<p class="dunerunner">
+			<input type="radio" name="q3" id="q3o3" class="dunerunner">		
+			<label for="q3o3">Helper</label>
+		</p>
+		<p class="triggerhappy">
+			<input type="radio" name="q3" id="q3o4" class="triggerhappy">		
+			<label for="q3o4">Slacker</label>
+		</p>
+		<p class="starscream">
+			<input type="radio" name="q3" id="q3o5" class="starscream">		
+			<label for="q3o5">Talker</label>
+		</p>
+	</div>
+	<input type="button" onclick="submitForm2()" value="Submit Your Answers!">
+</section>
 	<script src="main.js"></script>
 </body>
 </html>
