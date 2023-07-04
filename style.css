@@ -9,3 +9,7 @@
 #tieBreakerQuestions p {
     display: none;
 }
+
+#victoryScreen {
+    display: none;
+}

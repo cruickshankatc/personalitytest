@@ -30,55 +30,41 @@ let theCharacters = [
 	},
 ]
 
-let classArray;
 
-function submitForm() {
+
+function submitForm() { //Performed when 'Submit' is clicked. Adds to 'theCharacters.count' if 'theCharacters.name' equals a class in the answers
+	let classArray; //Array that holds name of every character corresponding to the answer. Values replaced on every loop through a new question
 	for (answer of answers) {
 		if (answer.checked) {
-			classArray = answer.className.split(" ");
+			classArray = answer.className.split(" "); //Accounts for possibility of multiple characters corresponding to one answer
 			for (classes of classArray) {
 				for (character of theCharacters) {
-					if (classes == character.name) {
+					if (classes == character.name) { //Whatever characters are within 'classArray' will be matched to corresponding name in 'theCharacters' and that character's count will be increased
 						character.count++;
 					}
 				}
-			}		//REMOVAL STARTS HERE
+			}	
 		}		
 	}
 	tallyingUp();
 }
 
-let result = [];
-function tallyingUp() {
 
-	result[0] = {
-		name: null,
-		count: 0,
-	};
-	for (char1 of theCharacters) {
-		for (char2 of theCharacters) {
-			if (char1.count > char2.count) {
-				if (char1.count > result[0].count) {
-					result[0] = char1;
-				} else if (char1.count == result[0].count) {
-					for (res of result) {
-						if (char1.name == res.name) {
-							x = true;
-						} else if (char1.name != res.name) {
-							x = false;
-						}
-					}
-					if (x == false) {
-						result.push(char1);
-					}
-				}
-			}
+let highestCount;
+let result = [];
+
+function tallyingUp() { 
+	highestCount = Math.max.apply(Math, theCharacters.map(function(o) { return o.count; }));
+	for (x = 0; x < theCharacters.length; x++) {
+		if (theCharacters[x].count == highestCount) {
+			result.push(theCharacters[x]);
 		}
 	}
 
 	mainQuestions.style.display = "none";
 
 	if (result.length < 2) {
+		body.innerHTML = `<p>You are ${result[0].name}!</p>`
 		console.log(`You are ${result[0].name}!`);
 	} else {
 		console.log(`Now for the tie breaker question!`);
@@ -103,6 +89,7 @@ function submitForm2 () {
 	for (answer of answers2) {
 		if (answer.checked) {
 			console.log(`You are ${answer.className}!`);
+			body.innerHTML = `<p>You are ${answer.className}!</p>`
 		}
 	}
 }
