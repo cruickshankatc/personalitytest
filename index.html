@@ -2,9 +2,10 @@
 <head>
 	<title>TFGQ Personality Test</title>
 	<link rel="stylesheet" href="style.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-<section id="mainQuestions">
+<section id="mainQuestions" class="container">
 	<div>
 	<span>1. What value do you bring to the group?</span>
 		<p>
@@ -37,7 +38,7 @@
 	<span>2. When the going gets tough, do people look to you for leadership?</span>
 		<p>
 			<input type="radio" name="q2" id="q2o1" class="cryofire">
-			<label for="q2o1">Reluctantly, yes<label>
+			<label for="q2o1">Reluctantly, yes</label>
 		</p>
 		<p>
 			<input type="radio" name="q2" id="q2o2" class="landmine">
@@ -64,7 +65,7 @@
 	<span>3. A fellow worker - not a friend or an enemy - is stuck working over time simply due to circumstance (not nessarily any fault).</span>
 		<p>
 			<input type="radio" name="q3" id="q3o1" class="cryofire">
-			<label for="q3o1">It's part of the job. We all have to do our time.<label>
+			<label for="q3o1">It's part of the job. We all have to do our time.</label>
 		</p>
 		<p>
 			<input type="radio" name="q3" id="q3o2" class="landmine brainstorm">
@@ -155,25 +156,25 @@
 			<label for="q7o2">Apologies are hard. I'd like to be direct but a lot of times I resort to apologizing indirectly.</label>
 		</p>
 		<p>
-			<input type="radio" name="q7" id="q7o2" class="dunerunner">
-			<label for="q7o2">I'll talk to them and try not to make it too uncomfortable</label>
+			<input type="radio" name="q7" id="q7o3" class="dunerunner">
+			<label for="q7o3">I'll talk to them and try not to make it too uncomfortable</label>
 		</p>
 		<p>
-			<input type="radio" name="q7" id="q7o3" class="brainstorm">		
-			<label for="q7o3">Formally, verbally and directly</label>
+			<input type="radio" name="q7" id="q7o4" class="brainstorm">		
+			<label for="q7o4">Formally, verbally and directly</label>
 		</p>
 		<p>
-			<input type="radio" name="q7" id="q7o4" class="triggerhappy">		
-			<label for="q7o4">Wait for it to pass over</label>
+			<input type="radio" name="q7" id="q7o5" class="triggerhappy">		
+			<label for="q7o5">Wait for it to pass over</label>
 		</p>
 		<p>
-			<input type="radio" name="q7" id="q7o5" class="starscream">		
-			<label for="q7o5">Get it over with as quick as possible and crack a joke</label>
+			<input type="radio" name="q7" id="q7o6" class="starscream">		
+			<label for="q7o6">Get it over with as quick as possible and crack a joke</label>
 		</p>
 	</div> 
 	<input type="button" onclick="submitForm()" value="Submit Your Answers!">
 </section>
-<section id="tieBreakerQuestions">
+<section id="tieBreakerQuestions" class="container">
 	<div>
 		<span>What single word best describes your role on the team?</span>
 		<p class="cryofire">
@@ -203,10 +204,11 @@
 	</div>
 	<input type="button" onclick="submitForm2()" value="Submit Your Answers!">
 </section>
-<section id="resultScreen">
+<section id="resultScreen" class="container">
 	<p>You are <span id="resultSpan"></span></p>
 	<input type="button" onclick="reset()" value="Retake Test">
 </section>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 	<script src="main.js"></script>
 </body>
 </html>
