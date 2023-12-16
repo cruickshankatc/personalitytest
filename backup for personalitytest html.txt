@@ -5,8 +5,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-<section id="mainQuestions" class="container-fluid questions">
-	<div id="firstQuestion">
+<section id="mainQuestions" class="container">
+	<div>
 	<span>1. What value do you bring to the group?</span>
 		<p>
 			<input type="radio" name="q1" id="q1o1" class="cryofire">
@@ -62,7 +62,7 @@
 		</p>
 	</div>
 	<div>
-	<span>3. A fellow worker - not a friend or an enemy - is stuck working over time simply due to circumstance (not necessarily any fault of their own).</span>
+	<span>3. A fellow worker - not a friend or an enemy - is stuck working over time simply due to circumstance (not nessarily any fault).</span>
 		<p>
 			<input type="radio" name="q3" id="q3o1" class="cryofire">
 			<label for="q3o1">It's part of the job. We all have to do our time.</label>
@@ -172,42 +172,40 @@
 			<label for="q7o6">Get it over with as quick as possible and crack a joke</label>
 		</p>
 	</div> 
-
-	<input type="button" onclick="allQuestionsChecked()" value="Submit Your Answers!">
-	<p id="alert">Please answer all of the questions before submitting.</p>
+	<input type="button" onclick="submitForm()" value="Submit Your Answers!">
 </section>
-<section id="tieBreakerQuestions" class="container questions">
+<section id="tieBreakerQuestions" class="container">
 	<div>
-		<span>TIE BREAKER: What single word best describes your role on the team?</span>
+		<span>What single word best describes your role on the team?</span>
 		<p class="cryofire">
-			<input type="radio" name="qT" id="qTo1" class="cryofire">
-			<label for="qTo1">Enforcer</label>
+			<input type="radio" name="q3" id="q3o1" class="cryofire">
+			<label for="q3o1">Enforcer<label>
 		</p>
 		<p class="landmine">
-			<input type="radio" name="qT" id="qTo2" class="landmine">
-			<label for="qTo2">Leader</label>
+			<input type="radio" name="q3" id="q3o2" class="landmine">
+			<label for="q3o2">Leader</label>
 		</p>
 		<p class="brainstorm">
-			<input type="radio" name="qT" id="qTo3" class="brainstorm">
-			<label for="qTo3">Thinker</label>
+			<input type="radio" name="q3" id="q3o3" class="brainstorm">
+			<label for="q3o3">Thinker</label>
 		</p>
 		<p class="dunerunner">
-			<input type="radio" name="qT" id="qTo4" class="dunerunner">		
-			<label for="qTo4">Helper</label>
+			<input type="radio" name="q3" id="q3o4" class="dunerunner">		
+			<label for="q3o4">Helper</label>
 		</p>
 		<p class="triggerhappy">
-			<input type="radio" name="qT" id="qTo5" class="triggerhappy">		
-			<label for="qTo5">Slacker</label>
+			<input type="radio" name="q3" id="q3o5" class="triggerhappy">		
+			<label for="q3o5">Slacker</label>
 		</p>
 		<p class="starscream">
-			<input type="radio" name="qT" id="qTo6" class="starscream">		
-			<label for="qTo6">Talker</label>
+			<input type="radio" name="q3" id="q3o6" class="starscream">		
+			<label for="q3o6">Talker</label>
 		</p>
 	</div>
 	<input type="button" onclick="submitForm2()" value="Submit Your Answers!">
 </section>
 <section id="resultScreen" class="container">
-	<p>You are <span id="resultSpan"></span>!</p>
+	<p>You are <span id="resultSpan"></span></p>
 	<input type="button" onclick="reset()" value="Retake Test">
 </section>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

@@ -44,30 +44,117 @@ let theCharacters = [
 ]
 
 //MAIN FUNCTIONS
-/** Performed when 'Submit' is clicked. Adds to 'theCharacters.count' if 'theCharacters.name' 
+/**
+ * Initiated when the "submit button" is clicked.
+ * Makes sure all of the questions are answered.
+ * If they are not the user isn't allowed to pass and is given a message
+ * telling them to complete the answers.
+ * If all the answers are given "submitForm()" is initiated.
+ */
+function allQuestionsChecked() {
+	//Simply used to determine the number of questions (used in the for loop)
+	let theQuestions = mainSection.getElementsByTagName("div");
+
+	//Boolean used to see if every question has an answer
+	let completedAllQuestions = true;
+
+	//Grabs the alert message text (on page load this text is hidden)
+	let alertMessage = document.getElementById("alert");
+	
+	//Loops through each question
+	for (x = 0; x < theQuestions.length; x++) {
+		/**
+		 * Every question and subsequent answer grouping corresponds to a div 
+		 * within the mainSection.
+		 * This first variable grabs that div so we can isolate specific answer
+		 * groups.
+		 */
+		let theQuestion = mainSection.getElementsByTagName("div")[x];
+
+		//Creates a nodeList of all the answers for the current question
+		let theAnswers = theQuestion.getElementsByTagName("input");
+		let theCheck = false;
+
+		/**
+		 * Loops through each answer to see if anyone is checked. 
+		 * 
+		 * As soon as the loop reaches an answer that's checked it sets "theCheck"
+		 * to true, breaks out of the current loop and moves onto the next 
+		 * question. "theCheck" is once again set to false. Once again, as long as 
+		 * the next question has an answer, "theCheck" will be set to true.
+		 * 
+		 * The loops will continue going through each question. When it finishes and
+		 * breaks out of the loop by default it will reach an if statement which will
+		 * determine if "completedAllQuestions" is true. This value is true by default
+		 * and as long as all of the questions are answered it will never be changed.
+		 * Thus, "submitForm()" is initiated.
+		 * 
+		 * However, if any question has no answer checked, then "theCheck remains".
+		 * When the "theCheck" remains false even after all the answers in any given
+		 * question are analyzed then "completedAllQuestions" is changed to false.
+		 * 
+		 * The larger loop (which goes through question after question) is immediately
+		 * broken out of. "completedAllQuestions" is evaluated, seen as false and the
+		 * user is prompted to finish answering the questions.
+		 */
+		for (y = 0; y < theAnswers.length; y++) {
+			let theAnswer = theQuestion.getElementsByTagName("input")[y];
+			if (theAnswer.checked) {
+				theCheck = true;
+				break;
+			} else {
+				continue
+			}
+		}
+
+		//Evaluates "theCheck" for a true or false value
+		if (theCheck === false) {
+			console.log("need to answer all questions!")
+			completedAllQuestions = false;
+			break;
+		} else {
+			console.log("congrats!")
+			continue;
+		}
+		
+	}
+
+	//Evaluates "completedAllQuestions" for a true or false value
+	if (completedAllQuestions) {
+		submitForm();
+		alertMessage.style.visibility = "hidden";
+	} else {
+		console.log("oops!");
+		alertMessage.style.visibility = "visible";
+	}
+}
+
+
+/** Initiated by allQuestionsChecked(). Performed if every question has been answered. Adds to 'theCharacters.count' if 'theCharacters.name' 
  * equals a class in the answers
  */
 function submitForm() { 	
-  // Extract the checked input elements
-  const checkedInputs = Array.from(answers).filter(input => input.checked);
-	// Extracts the classNames from the checked input elements
-	classNames = checkedInputs.reduce((result, n) => {
-		const x = n.className.split(" ");
-		return result.concat(x);
-	}, []);
+		// Extract the checked input elements
+		const checkedInputs = Array.from(answers).filter(input => input.checked);
+		// Extracts the classNames from the checked input elements
+		classNames = checkedInputs.reduce((result, n) => {
+			const x = n.className.split(" ");
+			return result.concat(x);
+		}, []);
 
-	/** 
-	*Matches the elements in classNames with theCharacters.names which correspond. Every time 
-	*an element in classNames equals theCharacters.name, theCharacters.count is increased. 
-	*/
-	classNames.forEach((className) => {
-		const matchedCharacter = theCharacters.find((character) => character.name === className);
-		if (matchedCharacter) {
-			matchedCharacter.count++;
-		}
-	});
+		/** 
+		*Matches the elements in classNames with theCharacters.names which correspond. Every time 
+		*an element in classNames equals theCharacters.name, theCharacters.count is increased. 
+		*/
+		classNames.forEach((className) => {
+			const matchedCharacter = theCharacters.find((character) => character.name === className);
+			if (matchedCharacter) {
+				matchedCharacter.count++;
+			}		
+		});
 
-	tallyingUp();
+		tallyingUp();
+	
 }
 
 /**
@@ -86,6 +173,7 @@ function tallyingUp() {
 
 	//Clears the screen for either the Tie Breaking Question or the Results Screen
 	mainQuestions.style.display = "none";
+	tieBreakerQuestions.style.display = "none";
 
 	/**
 	 * If result[] has only one item the Results Screen is presented (i.e. "You are CharacterX!")
@@ -95,6 +183,7 @@ function tallyingUp() {
 		let resultName = capFirstLetter(result[0].name);
 		factionColor(result[0].faction);
 		resultScreen.style.display = "block";
+		body.style.backgroundColor = "#131313";
 		resultSpan.innerHTML = resultName;
 	} else {
 		tieBreaker();
@@ -114,6 +203,7 @@ function tieBreaker () {
 	 * we only want answers for specific characters
 	 */
 	tieBreakerQuestions.style.display = "block";
+	body.style.backgroundColor = "#131313";
 
 	//Grab all responses (i.e. the paragraphs) within id="tieBreakerQuestions"
 	let tieBreakerParagraphs = Array.from(tieBreakerQuestions.getElementsByTagName("p"));
@@ -126,24 +216,26 @@ function tieBreaker () {
 		const matchingResult = result.find((r) => paragraph.className === r.name);
 		if (matchingResult) {
 			paragraph.style.display = "block";
+		} else {
+			paragraph.style.display = "none";
 		}
 	});
 }
 
-/**
- * I didn't revise this function at all.
- * I plan to remove it, and simply revise submitForm() to work for both the main 
- * questions and the Tie Breaking question
- */
+
+
 function submitForm2 () {
-	for (answer of answers2) {
-		if (answer.checked) {
-			let resultName = capFirstLetter(answer.className);;
-			resultScreen.style.display = "block";
-			resultSpan.innerHTML = resultName;
-			body.innerHTML = `<p>You are <span id="resultName">${resultName}!</span></p>`
-		}
-	}
+	result = [];
+	const checkedInput = Array.from(answers2).filter(input => input.checked);
+	x = checkedInput[0].className;
+	console.log(x);
+
+	const matchedCharacter = theCharacters.find((character) => character.name === x);
+			if (matchedCharacter) {
+				matchedCharacter.count++;
+			}		
+	
+	tallyingUp();
 }
 
 /**
@@ -159,11 +251,14 @@ function reset () {
 	//Results array
 	result = []; 
 	
-	//Each character's "points" or "count"
+	//Each character's "points" or "count" are reset
 	theCharacters.forEach((character) => {character.count = 0});
 
-	//Bubbles (radio buttons)
+	//Inputs for main questions are reset
 	Array.from(answers).forEach((answer) => {answer.checked = false});
+
+	//Input for Tie Breaker question is reset
+	Array.from(answers2).forEach((answer) => {answer.checked = false});
 }
 
 //SECONDARY FUNCTIONS
@@ -173,8 +268,8 @@ function capFirstLetter(str) {
 
 function factionColor(str) {
 	if (str == "autobot") {
-		resultSpan.style.color = "red";
+		resultSpan.style.color = "#c51818";
 	} else if (str == "decepticon") {
-		resultSpan.style.color = "purple";
+		resultSpan.style.color = "#3a0b61";
 	}
 }
