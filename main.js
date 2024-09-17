@@ -180,11 +180,14 @@ function tallyingUp() {
 	 * If result[] contains two or more items tieBreaker() runs
 	 */
 	if (result.length < 2) {
+		let resultImageTag = document.getElementById("resultImage");
 		let resultName = capFirstLetter(result[0].name);
+		let resultImage = "images/" + result[0].name + ".png";
 		factionColor(result[0].faction);
 		resultScreen.style.display = "block";
 		body.style.backgroundColor = "#131313";
 		resultSpan.innerHTML = resultName;
+		resultImageTag.src = resultImage;
 	} else {
 		tieBreaker();
 	}
@@ -273,3 +276,9 @@ function factionColor(str) {
 		resultSpan.style.color = "#3a0b61";
 	}
 }
+
+/**
+ * Generate all of the questions and their corresponding answers within
+ * the HTML
+ */
+//createQuiz();

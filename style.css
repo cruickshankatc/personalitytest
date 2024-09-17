@@ -118,6 +118,11 @@ body {
   font-size: 2em;
 }
 
+#resultImage {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
 #resultSpan {
     font-weight: bold;
     color: #0066cc; /* Adjust the color as needed */
